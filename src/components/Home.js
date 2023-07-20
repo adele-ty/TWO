@@ -1,11 +1,10 @@
-import {Text, View, FlatList, StyleSheet} from 'react-native';
-import {useEffect, useState} from 'react';
+import {View, ScrollView, StyleSheet, Text} from 'react-native';
 import Cover from './Home/Cover';
-import Read from './Home/Read';
-import Question from './Home/Question';
-import Radio from './Home/Radio';
+import ReadQuestion from './Home/ReadQuestion';
+import commonStyles from '../style';
+import Head from './Home/Head';
 
-export default function Index() {
+export default function Home() {
   const oneDayData = [
     {
       hp_author: '插画＆Edvard Munch 作品',
@@ -16,29 +15,61 @@ export default function Index() {
       hp_img_url: 'http://image.wufazhuce.com/FurIVzSk4yhJM6lLKIUUdWGGydSy',
       hp_makettime: '2023-07-19 06:00:00',
       hp_title: 'VOL.3938',
-      hpcontent_id: '4054',
+      content_id: '4054',
       image_authors: 'Edvard Munch',
       text_authors: '傅真《斑马》',
+      type: 'cover',
     },
     {
-      hpcontent_id: '4054',
-      image_authors: 'Edvard Munch',
-      text_authors: '傅真《斑马》',
+      type: 'read',
+      content_id: '6018',
+      hp_title: '父与子',
+      hp_makettime: '2023-07-20 06:00:00',
+      guide_word: '你要求一个生活窘迫的人去保持善意是不现实的。',
+      user_name: '陈功',
+      hp_img_url: 'http://image.wufazhuce.com/FkOWIEvpkxmsdXdPlT4Z-Zeke9oc',
+    },
+    {
+      type: 'question',
+      content_id: '6019',
+      hp_title: '父与子',
+      hp_makettime: '2023-07-20 06:00:00',
+      guide_word: '你要求一个生活窘迫的人去保持善意是不现实的。',
+      user_name: '陈功',
+      hp_img_url: 'http://image.wufazhuce.com/FkOWIEvpkxmsdXdPlT4Z-Zeke9oc',
     },
   ];
 
   return (
     <View style={styles.listContainer}>
-      <Cover detail={oneDayData[0]} />
-      <Read detail={oneDayData[1]} />
-      <Question detail={oneDayData[2]} />
-      <Radio detail={oneDayData[3]} />
+      <Head />
+      <ScrollView>
+        <Cover detail={oneDayData[0]} />
+        <ReadQuestion detail={oneDayData[1]} />
+        <ReadQuestion detail={oneDayData[2]} style={styles.question} />
+        <Text
+          style={[
+            commonStyles.center,
+            commonStyles.textStyle,
+            styles.checkPrevious,
+          ]}>
+          {'<< 滑动查看上一个'}
+        </Text>
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   listContainer: {
-    marginTop: '20%',
+    flex: 1,
+  },
+  checkPrevious: {
+    backgroundColor: 'rgb(252, 252, 252)',
+    height: '10%',
+    paddingTop: '10%',
+  },
+  question: {
+    marginBottom: 0,
   },
 });

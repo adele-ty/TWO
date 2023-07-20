@@ -1,16 +1,21 @@
 import React from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
 import IconButton from '../../common/IconButton';
+import commonStyles from '../../style';
 
 export default function Cover(props) {
   const {hp_img_url, hp_author, hp_content, text_authors} = props.detail;
   return (
-    <View style={styles.coverContainer}>
+    <View style={commonStyles.Container}>
       <View style={styles.cardContainer}>
         <Image source={{uri: hp_img_url}} style={styles.img} />
-        <Text style={[styles.title, styles.textStyle]}>{hp_author}</Text>
+        <Text style={[commonStyles.center, commonStyles.textStyle]}>
+          {hp_author}
+        </Text>
         <Text style={styles.mainWord}>{hp_content}</Text>
-        <Text style={[styles.title, styles.textStyle]}>{text_authors}</Text>
+        <Text style={[commonStyles.center, commonStyles.textStyle]}>
+          {text_authors}
+        </Text>
       </View>
       <View style={styles.userOperate}>
         <IconButton
@@ -33,12 +38,6 @@ export default function Cover(props) {
 }
 
 const styles = StyleSheet.create({
-  coverContainer: {
-    backgroundColor: '#fff',
-    marginBottom: '5%',
-    width: '100%',
-    padding: '5%',
-  },
   cardContainer: {
     borderStyle: 'solid',
     borderWidth: 1,
@@ -54,13 +53,8 @@ const styles = StyleSheet.create({
   },
   img: {
     width: '100%',
-    height: '47%',
+    height: 200,
     marginBottom: '2.5%',
-  },
-  textStyle: {color: 'rgba(0, 0, 0, .3)', fontSize: 14},
-  title: {
-    textAlign: 'center',
-    marginBottom: '7.5%',
   },
   mainWord: {
     marginBottom: '12.5%',
@@ -69,7 +63,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'sans-serif',
   },
-
   userOperate: {
     display: 'flex',
     flexDirection: 'row',
