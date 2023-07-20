@@ -8,8 +8,12 @@ export default function IconButton(props) {
     <TouchableHighlight
       onPress={pressEvent}
       activeOpacity={1}
-      style={styles.iconButton}>
-      <Icon name={name} size={size} color={color} style={styles.iconButton}>
+      style={styles.show}>
+      <Icon
+        name={name}
+        size={size}
+        color={color}
+        style={{backgroundColor: '#fff'}}>
         {name === 'bandcamp' ? (
           <Text style={styles.textStyle}>{'小记'}</Text>
         ) : (
@@ -21,9 +25,12 @@ export default function IconButton(props) {
 }
 
 const styles = StyleSheet.create({
-  iconButton: {
+  show: {
     backgroundColor: '#fff',
     height: 20,
+    flex: 1,
+    marginLeft: '6%',
   },
-  textStyle: {color: 'rgba(0, 0, 0, .3)', fontSize: 14},
+
+  textStyle: {color: 'rgba(0, 0, 0, .3)', fontSize: 12},
 });
