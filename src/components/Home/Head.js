@@ -1,16 +1,18 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableHighlight} from 'react-native';
 import IconButton from '../../common/IconButton';
+import {getTodayDate} from '../../utils';
 
 export default function Head() {
+  const [year, month, date] = getTodayDate();
   return (
     <View style={styles.head}>
       <TouchableHighlight
         onPress={() => console.log('today is ...')}
         activeOpacity={1}>
         <View style={styles.row}>
-          <Text style={[styles.text, styles.bigText, styles.bold]}>{'18'}</Text>
-          <Text style={[styles.text, styles.bold]}>{'Jul.2023'}</Text>
+          <Text style={[styles.text, styles.bigText, styles.bold]}>{date}</Text>
+          <Text style={[styles.text, styles.bold]}>{`${month}.${year}`}</Text>
           <IconButton size={24} name="caret-down" color="black" />
         </View>
       </TouchableHighlight>
