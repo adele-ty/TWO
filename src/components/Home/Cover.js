@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
 import IconButton from '../../common/IconButton';
-import commonStyles from '../../style';
+import {commonStyles} from '../../style';
 
 export default function Cover(props) {
   const {hp_img_url, hp_author, hp_content, text_authors} = props.detail;
