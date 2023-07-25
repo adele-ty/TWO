@@ -4,18 +4,18 @@ import IconButton from '../../common/IconButton';
 import {commonStyles} from '../../style';
 
 export default function Cover(props) {
-  const {hp_img_url, hp_author, hp_content, text_authors} = props.detail;
+  // const {hp_img_url, hp_author, hp_content, text_authors} = props.detail;
   return (
     <View style={commonStyles.Container}>
       <View style={styles.cardContainer}>
-        <Image source={{uri: hp_img_url}} style={styles.img} />
+        {/* <Image source={{uri: hp_img_url}} style={styles.img} />
         <Text style={[commonStyles.center, commonStyles.textStyle]}>
           {hp_author}
         </Text>
         <Text style={styles.mainWord}>{hp_content}</Text>
         <Text style={[commonStyles.center, commonStyles.textStyle]}>
           {text_authors}
-        </Text>
+        </Text> */}
       </View>
       <View style={styles.userOperate}>
         <IconButton
