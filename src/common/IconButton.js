@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableHighlight} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function IconButton(props) {
   const {name, size, color, pressEvent} = props;
   return (
-    <TouchableHighlight
+    <TouchableOpacity
       onPress={pressEvent}
       activeOpacity={1}
       style={styles.show}>
@@ -20,16 +20,13 @@ export default function IconButton(props) {
           <></>
         )}
       </Icon>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   show: {
     backgroundColor: '#fff',
-    height: 20,
-    flex: 1,
-    marginLeft: '6%',
   },
 
   textStyle: {color: 'rgba(0, 0, 0, .3)', fontSize: 12},

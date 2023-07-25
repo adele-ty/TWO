@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Provider} from 'react-redux';
 
@@ -10,23 +11,24 @@ import Discover from './components/Discover';
 import Radio from './components/Radio';
 import My from './components/My';
 import store from './data/Redux/store';
+import EssayDetail from './components/Comp/EssayDetail';
 
-export default function App() {
+function BottomNavigator() {
   const Tab = createBottomTabNavigator();
   let IconName = '';
   const options = ({route}) => ({
     tabBarIcon: ({size, focused}) => {
       switch (route.name) {
-        case '首页':
+        case 'Home':
           IconName = 'circle-o';
           break;
-        case '发现':
+        case 'Discover':
           IconName = 'th-large';
           break;
-        case '收音机':
+        case 'Radio':
           IconName = 'youtube-play';
           break;
-        case '我的':
+        case 'My':
           IconName = 'user-o';
           break;
       }
@@ -38,21 +40,44 @@ export default function App() {
     tabBarInactiveTintColor: 'gray',
     tabBarStyle: styles.tabBarStyle,
     tabBarItemStyle: styles.tabBarItemStyle,
+    tabBarLabel: () => {
+      switch (route.name) {
+        case 'Home':
+          return <Text>首页</Text>;
+        case 'Discover':
+          return <Text>发现</Text>;
+        case 'Radio':
+          return <Text>收音机</Text>;
+        case 'My':
+          return <Text>我的</Text>;
+      }
+    },
   });
 
   return (
+    <Tab.Navigator screenOptions={options}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Discover" component={Discover} />
+      <Tab.Screen name="Radio" component={Radio} />
+      <Tab.Screen name="My" component={My} />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  const ScreenStack = createStackNavigator();
+  return (
     <Provider store={store}>
       <NavigationContainer>
-        <Tab.Navigator screenOptions={options}>
-          <Tab.Screen name="首页" component={Home} />
-          <Tab.Screen name="发现" component={Discover} />
-          <Tab.Screen name="收音机" component={Radio} />
-          <Tab.Screen name="我的" component={My} />
-        </Tab.Navigator>
+        <ScreenStack.Navigator screenOptions={{header: () => <></>}}>
+          <ScreenStack.Screen name="IndexScreen" component={BottomNavigator} />
+          <ScreenStack.Screen name="DetailScreen" component={EssayDetail} />
+        </ScreenStack.Navigator>
       </NavigationContainer>
     </Provider>
   );
 }
+
 const styles = StyleSheet.create({
   tabBarStyle: {
     height: '10%',

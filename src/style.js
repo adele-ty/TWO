@@ -11,7 +11,6 @@ const commonStyles = StyleSheet.create({
   textStyle: {color: 'rgba(0, 0, 0, .3)', fontSize: 14},
   center: {
     textAlign: 'center',
-    marginBottom: '7.5%',
   },
   Spacing: {
     letterSpacing: 5,
