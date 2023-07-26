@@ -3,7 +3,16 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function IconButton(props) {
-  const {name, size, color, pressEvent} = props;
+  const {name, size, color, pressEvent, praisenum} = props;
+  const getText = () => {
+    if (name === 'bandcamp') {
+      return <Text style={styles.textStyle}>{'小记'}</Text>;
+    } else if (name === 'heart-o') {
+      return <Text style={styles.textStyle}>{praisenum}</Text>;
+    } else {
+      return <></>;
+    }
+  };
   return (
     <TouchableOpacity
       onPress={pressEvent}
@@ -14,11 +23,7 @@ export default function IconButton(props) {
         size={size}
         color={color}
         style={{backgroundColor: '#fff'}}>
-        {name === 'bandcamp' ? (
-          <Text style={styles.textStyle}>{'小记'}</Text>
-        ) : (
-          <></>
-        )}
+        {getText()}
       </Icon>
     </TouchableOpacity>
   );

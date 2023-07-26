@@ -37,4 +37,11 @@ const getEssayDetail = async id => {
   return data.data;
 };
 
-export {getTodayData, getReadEssay, getEssayDetail};
+const getQuestionDetail = async id => {
+  const {data} = await axios.get(
+    `http://v3.wufazhuce.com:8000/api/question/${id}?version=3.5.0&platform=android`,
+  );
+  return data.data;
+};
+
+export {getTodayData, getReadEssay, getEssayDetail, getQuestionDetail};

@@ -11,7 +11,7 @@ import Discover from './components/Discover';
 import Radio from './components/Radio';
 import My from './components/My';
 import store from './data/Redux/store';
-import EssayDetail from './components/Comp/EssayDetail';
+import Detail from './components/Comp/Detail';
 
 function BottomNavigator() {
   const Tab = createBottomTabNavigator();
@@ -71,7 +71,7 @@ export default function App() {
       <NavigationContainer>
         <ScreenStack.Navigator screenOptions={{header: () => <></>}}>
           <ScreenStack.Screen name="IndexScreen" component={BottomNavigator} />
-          <ScreenStack.Screen name="DetailScreen" component={EssayDetail} />
+          <ScreenStack.Screen name="DetailScreen" component={Detail} />
         </ScreenStack.Navigator>
       </NavigationContainer>
     </Provider>

@@ -9,11 +9,12 @@ import Head from './Home/Head';
 import {initList} from '../data/Redux/todayContent';
 import {getTodayData} from '../data/api';
 
-export default function Home() {
+export default function Home({navigation}) {
   const dispatch = useDispatch();
   const todayData = useSelector(state => state.todayContent.value);
 
   useEffect(() => {
+    console.log('home');
     getTodayData().then(res => {
       dispatch(initList(res));
     });
@@ -24,8 +25,12 @@ export default function Home() {
       <Head />
       <ScrollView>
         <Cover detail={todayData[0]} />
-        <Read detail={todayData[1]} />
-        <Question detail={todayData[2]} style={styles.question} />
+        <Read detail={todayData[1]} navigation={navigation} />
+        <Question
+          detail={todayData[2]}
+          style={styles.question}
+          navigation={navigation}
+        />
         <Text
           style={[
             commonStyles.center,
@@ -46,7 +51,7 @@ const styles = StyleSheet.create({
   checkPrevious: {
     backgroundColor: 'rgb(252, 252, 252)',
     height: '10%',
-    paddingTop: '10%',
+    paddingVertical: '15%',
   },
   question: {
     marginBottom: 0,

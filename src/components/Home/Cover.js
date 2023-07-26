@@ -1,21 +1,50 @@
-import React from 'react';
-import {Text, View, Image, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import IconButton from '../../common/IconButton';
+import CoverModal from '../Comp/CoverModal';
 import {commonStyles} from '../../style';
 
-export default function Cover(props) {
-  // const {hp_img_url, hp_author, hp_content, text_authors} = props.detail;
+export default function Cover({detail}) {
+  const {hp_img_url, hp_author, hp_content, text_authors, hp_title, praisenum} =
+    detail;
+  const [modalVisible, setModalVisible] = useState(false);
+  const [markColor, setMarkColor] = useState('rgb(166, 166, 166)');
+  const [heart, setHeart] = useState(praisenum);
+  const [heartColor, setHeartColor] = useState('rgb(166, 166, 166)');
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const clickMark = () => {
+    if (markColor === 'rgb(166, 166, 166)') setMarkColor('rgb(255, 205, 104)');
+    if (markColor === 'rgb(255, 205, 104)') setMarkColor('rgb(166, 166, 166)');
+  };
+
+  const clickHeart = () => {
+    setHeartColor('rgb(254, 84, 85)');
+    setHeart(heart + 1);
+  };
+
   return (
     <View style={commonStyles.Container}>
+      <CoverModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        data={{hp_title, hp_img_url, hp_author}}
+      />
       <View style={styles.cardContainer}>
-        {/* <Image source={{uri: hp_img_url}} style={styles.img} />
-        <Text style={[commonStyles.center, commonStyles.textStyle]}>
+        <TouchableOpacity activeOpacity={1} onPress={openModal}>
+          <Image source={{uri: hp_img_url}} style={styles.img} />
+        </TouchableOpacity>
+        <Text
+          style={[commonStyles.center, commonStyles.textStyle, styles.margin]}>
           {hp_author}
         </Text>
         <Text style={styles.mainWord}>{hp_content}</Text>
         <Text style={[commonStyles.center, commonStyles.textStyle]}>
           {text_authors}
-        </Text> */}
+        </Text>
       </View>
       <View style={styles.userOperate}>
         <IconButton
@@ -25,8 +54,19 @@ export default function Cover(props) {
           pressEvent={() => console.log('pencil')}
         />
         <IconButton name="pencil" size={20} color="rgb(166, 166, 166)" />
-        <IconButton name="bookmark-o" size={20} color="rgb(166, 166, 166)" />
-        <IconButton name="heart-o" size={20} color="rgb(166, 166, 166)" />
+        <IconButton
+          name="bookmark-o"
+          size={20}
+          color={markColor}
+          pressEvent={clickMark}
+        />
+        <IconButton
+          name="heart-o"
+          size={20}
+          color={heartColor}
+          praisenum={heart}
+          pressEvent={clickHeart}
+        />
         <IconButton
           name="share-square-o"
           size={20}
@@ -50,6 +90,7 @@ const styles = StyleSheet.create({
     },
     overflow: 'hidden',
     marginBottom: '5%',
+    paddingBottom: '10%',
   },
   img: {
     width: '100%',
@@ -66,6 +107,11 @@ const styles = StyleSheet.create({
   userOperate: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    width: '95%',
+    marginHorizontal: '2%',
+    justifyContent: 'space-between',
+  },
+  margin: {
+    marginBottom: '8%',
   },
 });
