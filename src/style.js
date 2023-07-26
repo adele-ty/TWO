@@ -15,26 +15,36 @@ const commonStyles = StyleSheet.create({
   Spacing: {
     letterSpacing: 5,
   },
+  blackTitle: {
+    fontWeight: 'bold',
+    color: 'rgba(0, 0, 0, .8)',
+  },
 });
 
 // 首页阅读和问答共用
 const ReadQuestionStyles = StyleSheet.create({
+  header: {
+    marginBottom: '5%',
+    ...commonStyles.center,
+    ...commonStyles.Spacing,
+    ...commonStyles.textStyle,
+  },
   userOperate: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    marginLeft: '65%',
+    justifyContent: 'space-between',
+    marginLeft: '73%',
+    width: '25%',
   },
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
     marginBottom: '2.5%',
   },
   username: {
     marginBottom: '5%',
   },
   guideWord: {
-    marginBottom: '2.5%',
+    marginBottom: '5%',
   },
   img: {
     width: '100%',

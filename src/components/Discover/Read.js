@@ -23,6 +23,7 @@ export default function Read({navigation}) {
   };
 
   useEffect(() => {
+    console.log('阅读');
     getReadEssay().then(res => {
       dispatch(initReadList(res));
     });
