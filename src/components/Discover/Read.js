@@ -16,11 +16,9 @@ export default function Read({navigation}) {
   };
 
   useEffect(() => {
-    console.log('阅读');
     getReadEssay().then(res => {
       dispatch(initReadList(res));
     });
-
     setListData([{title: '7月', data: [...readList]}]);
   }, []);
 

@@ -30,6 +30,13 @@ const getReadEssay = async () => {
   return data.data.essay;
 };
 
+const getQuestion = async () => {
+  const {data} = await axios.get(
+    'http://v3.wufazhuce.com:8000/api/reading/index/?version=3.5.0&platform=android',
+  );
+  return data.data.question;
+};
+
 const getEssayDetail = async id => {
   const {data} = await axios.get(
     `http://v3.wufazhuce.com:8000/api/essay/${id}?version=3.5.0&platform=android`,
@@ -78,4 +85,5 @@ export {
   getQuestionDetail,
   getBookMovie,
   getBookMovieDetail,
+  getQuestion,
 };

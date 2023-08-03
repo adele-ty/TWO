@@ -10,7 +10,6 @@ export default function BookMovie({id}) {
   let [bookMovieDetail, setBookMovieDetail] = useState({});
   useEffect(() => {
     getBookMovieDetail(id).then(res => {
-      console.log(res);
       const {
         title,
         user: {user_name},
