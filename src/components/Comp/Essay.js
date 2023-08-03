@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, Text, StyleSheet, useWindowDimensions} from 'react-native';
+import {ScrollView, Text, useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
-import {commonStyles} from '../../style';
+import {commonStyles, detailStyles} from '../../style';
 import {getEssayDetail} from '../../data/api';
 
 export default function Essay({id}) {
@@ -27,11 +27,11 @@ export default function Essay({id}) {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={styles.scrollContainer}>
-      <Text style={[styles.title, commonStyles.blackTitle]}>
+      style={detailStyles.scrollContainer}>
+      <Text style={[detailStyles.title, commonStyles.blackTitle]}>
         {essayDetail.hp_title}
       </Text>
-      <Text style={styles.author}>{essayDetail.hp_author}</Text>
+      <Text style={detailStyles.author}>{essayDetail.hp_author}</Text>
       <RenderHtml
         contentWidth={width}
         source={{html: essayDetail.hp_content}}
@@ -39,18 +39,3 @@ export default function Essay({id}) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  scrollContainer: {
-    paddingHorizontal: '5%',
-    marginBottom: '10%',
-  },
-  title: {
-    fontSize: 22,
-  },
-  author: {
-    fontSize: 14,
-    color: 'rgba(0, 0, 0, .6)',
-    marginVertical: '10%',
-  },
-});
