@@ -44,4 +44,38 @@ const getQuestionDetail = async id => {
   return data.data;
 };
 
-export {getTodayData, getReadEssay, getEssayDetail, getQuestionDetail};
+const getBookMovie = async () => {
+  const {data} = await axios.get(
+    'http://v3.wufazhuce.com:8000/api/movie/list/0?version=3.5.0&platform=android',
+  );
+
+  const Data = [
+    {date: '2022年10月', data: data.data.slice(0, 1)},
+    {date: '2022年08月', data: data.data.slice(1, 2)},
+    {date: '2022年07月', data: data.data.slice(2, 3)},
+    {date: '2022年05月', data: data.data.slice(3, 6)},
+    {date: '2022年03月', data: data.data.slice(6, 9)},
+    {date: '2022年02月', data: data.data.slice(9, 13)},
+    {date: '2022年01月', data: data.data.slice(13, 16)},
+    {date: '2021年12月', data: data.data.slice(16, 20)},
+  ];
+
+  return Data;
+};
+
+const getBookMovieDetail = async id => {
+  const {data} = await axios.get(
+    `http://v3.wufazhuce.com:8000/api/movie/${id}/story/1/0?version=3.5.0&platform=android`,
+  );
+
+  return data.data.data[0];
+};
+
+export {
+  getTodayData,
+  getReadEssay,
+  getEssayDetail,
+  getQuestionDetail,
+  getBookMovie,
+  getBookMovieDetail,
+};

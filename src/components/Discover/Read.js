@@ -1,16 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Text,
-  SectionList,
-  View,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import {Text, SectionList, View, Image, TouchableOpacity} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {getReadEssay} from '../../data/api';
 import {initReadList} from '../../data/Redux/Read';
-import {commonStyles} from '../../style';
+import {commonStyles, sectionList} from '../../style';
 
 export default function Read({navigation}) {
   const dispatch = useDispatch();
@@ -37,12 +30,17 @@ export default function Read({navigation}) {
       <View>
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => navigation.navigate('DetailScreen', item.content_id)}>
-          <View style={styles.itemStyle}>
-            <Image source={{uri: img_url}} style={styles.img} />
-            <View>
-              <Text style={styles.title}>{item.hp_title}</Text>
-              <Text style={styles.text}>{item.author[0].user_name}</Text>
+          onPress={() =>
+            navigation.navigate('DetailScreen', {
+              id: item.content_id,
+              head: '阅读',
+            })
+          }>
+          <View style={sectionList.itemStyle}>
+            <Image source={{uri: img_url}} style={sectionList.littleImg} />
+            <View style={sectionList.titleContainer}>
+              <Text style={sectionList.title}>{item.hp_title}</Text>
+              <Text>{item.author[0].user_name}</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -51,7 +49,7 @@ export default function Read({navigation}) {
   };
 
   return (
-    <View style={styles.listContainer}>
+    <View style={sectionList.listContainer}>
       <SectionList
         showsVerticalScrollIndicator={false}
         refreshing={true}
@@ -67,27 +65,3 @@ export default function Read({navigation}) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  listContainer: {
-    backgroundColor: '#fff',
-    padding: '7%',
-    paddingTop: '2%',
-  },
-  itemStyle: {
-    flexDirection: 'row',
-    marginTop: '7%',
-  },
-  img: {
-    width: 70,
-    height: 70,
-    borderRadius: 10,
-    marginRight: '5%',
-  },
-  title: {
-    color: 'rgba(0, 0, 0, .7)',
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginBottom: '10%',
-  },
-});

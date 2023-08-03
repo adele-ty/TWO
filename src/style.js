@@ -54,4 +54,54 @@ const ReadQuestionStyles = StyleSheet.create({
   },
 });
 
-export {commonStyles, ReadQuestionStyles};
+// 阅读书影列表
+const sectionList = StyleSheet.create({
+  listContainer: {
+    backgroundColor: '#fff',
+    padding: '7%',
+    paddingTop: '2%',
+    paddingBottom: 0,
+  },
+  littleImg: {
+    width: 70,
+    height: 70,
+    borderRadius: 10,
+    marginRight: '5%',
+  },
+  itemStyle: {
+    flexDirection: 'row',
+    marginVertical: '5%',
+  },
+  titleContainer: {
+    flex: 1,
+  },
+  title: {
+    color: 'rgba(0, 0, 0, .7)',
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginBottom: '10%',
+    width: '100%',
+  },
+  littleTitle: {
+    color: 'rgba(0, 0, 0, .5)',
+    fontSize: 13,
+  },
+});
+
+// 阅读、问答、书影详情页
+const detailStyles = StyleSheet.create({
+  scrollContainer: {
+    paddingHorizontal: '5%',
+    marginBottom: '10%',
+  },
+  title: {
+    fontSize: 22,
+  },
+  author: {
+    fontSize: 14,
+    color: 'rgba(0, 0, 0, .6)',
+    marginVertical: '10%',
+  },
+});
+
+export {commonStyles, ReadQuestionStyles, sectionList, detailStyles};

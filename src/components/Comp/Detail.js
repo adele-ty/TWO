@@ -3,6 +3,7 @@ import {Text, StyleSheet, View} from 'react-native';
 import IconButton from '../../common/IconButton';
 import Question from './Question';
 import Essay from './Essay';
+import BookMovie from './BookMovie';
 
 export default function EssayDetail({navigation, route}) {
   const {id, head} = route.params;
@@ -10,6 +11,11 @@ export default function EssayDetail({navigation, route}) {
     navigation.pop(1);
   };
 
+  const getScreen = () => {
+    if (head === '阅读') return <Essay id={id} />;
+    if (head === '问答') return <Question id={id} />;
+    if (head === '书影') return <BookMovie id={id} />;
+  };
   return (
     <View style={styles.container}>
       <View style={styles.box}>
@@ -20,7 +26,7 @@ export default function EssayDetail({navigation, route}) {
             color="rgb(176, 176, 176)"
             pressEvent={goBack}
           />
-          <Text style={styles.tabLabel}>{head}</Text>
+          <Text style={styles.tabLabel}>{head !== '书影' ? head : ''}</Text>
           <IconButton
             name="bookmark-o"
             size={25}
@@ -29,7 +35,7 @@ export default function EssayDetail({navigation, route}) {
           />
         </View>
       </View>
-      {head === '阅读' ? <Essay id={id} /> : <Question id={id} />}
+      {getScreen()}
     </View>
   );
 }
