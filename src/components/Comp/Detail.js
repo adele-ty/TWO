@@ -4,6 +4,7 @@ import IconButton from '../../common/IconButton';
 import Question from './Question';
 import Essay from './Essay';
 import BookMovie from './BookMovie';
+import Music from './Music';
 
 export default function EssayDetail({navigation, route}) {
   const {id, head} = route.params;
@@ -15,6 +16,7 @@ export default function EssayDetail({navigation, route}) {
     if (head === '阅读') return <Essay id={id} />;
     if (head === '问答') return <Question id={id} />;
     if (head === '书影') return <BookMovie id={id} />;
+    if (head === '音乐') return <Music id={id} />;
   };
   return (
     <View style={styles.container}>
