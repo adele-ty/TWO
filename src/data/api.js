@@ -78,6 +78,42 @@ const getBookMovieDetail = async id => {
   return data.data.data[0];
 };
 
+const getMusicList = async () => {
+  const {data} = await axios.get(
+    'http://v3.wufazhuce.com:8000/api/music/idlist/0?version=3.5.0&platform=android',
+  );
+
+  const music1 = await getMusicDetail(data.data[0]);
+  const music2 = await getMusicDetail(data.data[1]);
+  const music3 = await getMusicDetail(data.data[2]);
+  const music4 = await getMusicDetail(data.data[3]);
+  const music5 = await getMusicDetail(data.data[4]);
+  const music6 = await getMusicDetail(data.data[5]);
+  const music7 = await getMusicDetail(data.data[6]);
+
+  let musicList = [];
+  await Promise.all([
+    music1,
+    music2,
+    music3,
+    music4,
+    music5,
+    music6,
+    music7,
+  ]).then(res => {
+    musicList = res;
+  });
+
+  return musicList;
+};
+
+const getMusicDetail = async id => {
+  const {data} = await axios.get(
+    `http://v3.wufazhuce.com:8000/api/music/detail/${id}?version=3.5.0&platform=android`,
+  );
+  return data.data;
+};
+
 export {
   getTodayData,
   getReadEssay,
@@ -86,4 +122,6 @@ export {
   getBookMovie,
   getBookMovieDetail,
   getQuestion,
+  getMusicList,
+  getMusicDetail,
 };
