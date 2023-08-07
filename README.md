@@ -61,7 +61,11 @@
 
 ## 效果图
 
-![](./public/two.mp4)
+![](./public/1.gif)
+![](./public/2.gif)
+![](./public/3.gif)
+![](./public/4.gif)
+![](./public/5.gif)
 
 ## TODO
 
