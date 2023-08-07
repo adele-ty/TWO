@@ -1,79 +1,74 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# ReactNative 仿 ONE 一个 APP
 
-# Getting Started
+## 目录结构
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+```
+├── README.md
+├── __tests__
+│   ├── App.test.tsx
+├── android
+│   ├── app
+│   ├── build
+│   ├── build.gradle
+│   ├── gradle
+│   ├── gradle.properties
+│   ├── gradlew
+│   ├── gradlew.bat
+│   └── settings.gradle
+├── ios
+│   ├── TWO
+│   ├── TWO.xcodeproj
+│   ├── TWOTests
+│   └── Podfile
+├── src
+│  ├── common                                               公共小组件
+│  │   ├── IconButton.js                                    图标按钮
+│  │   └── Player.js                                        音频播放组件
+│  ├── components
+│  │   ├── Comp                                             文章、问答、书影详情页组件
+│  │   ├── Discover                                         发现组件子模块
+│  │   ├── Home                                             首页组件子模块
+│  │   ├── Discover.js                                      发现组件
+│  │   ├── Home.js                                          首页组件
+│  │   ├── Radio.js                                         收音机组件
+│  │   └── My.js                                            我的组件
+│  ├── data
+│  │   ├── Redux                                            状态管理库
+│  │   └── api.js                                           发送网络请求
+│  ├── App.js
+│  ├── style.js                                             公共样式
+│  └── uilts.js                                             辅助方法
+├── .eslintrc.js
+├── .gitignore
+├── app.json
+├── babel.config.js
+├── index.js                                                项目入口
+├── jest.config.js
+├── metro.config.js
+├── package-lock.json
+├── package.json
+├── service.js                                              react-native-track-player相关
+├── tsconfig.json
+└── yarn.lock
 
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Start your Application
+## 运行
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+- 确保你已安装好 React Native 所需的依赖环境
+- 在根目录下执行 npm install
+- 执行 react-native run-android
 
-### For Android
+## 效果图
 
-```bash
-# using npm
-npm run android
+![](./public/two.mp4)
 
-# OR using Yarn
-yarn android
-```
+## TODO
 
-### For iOS
+- 音频播放
+- 引入高德地图 sdk
+- 收音机模块
+- 我的模块
+- 暂不适配 ios
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+注: 由于接口限制只能完成部分功能，因为获得的接口数据很多不符合需要，因此某些功能有许多重复数据。
