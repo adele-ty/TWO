@@ -1,6 +1,6 @@
 import {View, ScrollView, StyleSheet, Text} from 'react-native';
-import {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import Cover from './Home/Cover';
 import Read from './Home/Read';
 import Question from './Home/Question';
@@ -11,12 +11,12 @@ import {getTodayData} from '../data/api';
 
 export default function Home({navigation}) {
   const dispatch = useDispatch();
-  const todayData = useSelector(state => state.todayContent.value);
+  let [todayData, setTodayData] = useState([]);
 
   useEffect(() => {
-    console.log('home');
     getTodayData().then(res => {
       dispatch(initList(res));
+      setTodayData([...res]);
     });
   }, []);
 

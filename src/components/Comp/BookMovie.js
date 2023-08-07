@@ -38,7 +38,7 @@ export default function BookMovie({id}) {
       <Text style={detailStyles.author}>文/{bookMovieDetail.user_name}</Text>
       <RenderHtml
         contentWidth={width}
-        source={{html: bookMovieDetail.content}}
+        source={{html: bookMovieDetail.content || '<p></p>'}}
       />
     </ScrollView>
   );
