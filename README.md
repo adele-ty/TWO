@@ -60,11 +60,11 @@
 - 执行 react-native run-android
 
 ## 效果图
-![](./public/1.gif)
-![](./public/2.gif)
-![](./public/3.gif)
-![](./public/4.gif)
-![](./public/5.gif)
+![](./public/1.gif)  
+![](./public/2.gif)  
+![](./public/3.gif)  
+![](./public/4.gif)  
+![](./public/5.gif)  
 
 ## TODO
 
