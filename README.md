@@ -1,4 +1,4 @@
-# ReactNative 仿 ONE 一个 APP
+# ReactNative 仿 ONE一个 APP
 
 ## 目录结构
 
@@ -61,7 +61,9 @@
 
 ## 效果图
 
-![](./public/two.mp4)
+<video id="video" controls="" preload="none" poster="效果图">
+      <source id="mp4" src="./public/two.mp4" type="video/mp4">
+</videos>
 
 ## TODO
 
