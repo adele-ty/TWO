@@ -18,8 +18,8 @@ export default function Read({navigation}) {
   useEffect(() => {
     getReadEssay().then(res => {
       dispatch(initReadList(res));
+      setListData([{title: '7月', data: [...res]}]);
     });
-    setListData([{title: '7月', data: [...readList]}]);
   }, []);
 
   const Item = ({item}) => {

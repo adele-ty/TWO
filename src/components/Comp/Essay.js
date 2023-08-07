@@ -34,7 +34,7 @@ export default function Essay({id}) {
       <Text style={detailStyles.author}>{essayDetail.hp_author}</Text>
       <RenderHtml
         contentWidth={width}
-        source={{html: essayDetail.hp_content}}
+        source={{html: essayDetail.hp_content || '<p></p>'}}
       />
     </ScrollView>
   );

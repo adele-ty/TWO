@@ -45,7 +45,7 @@ export default function Question({id}) {
       <Text style={styles.author}>{questionDetail.answer_name}答:</Text>
       <RenderHtml
         contentWidth={width}
-        source={{html: questionDetail.answer_content}}
+        source={{html: questionDetail.answer_content || '<p></p>'}}
       />
     </ScrollView>
   );

@@ -55,12 +55,16 @@ export default function Music({id}) {
       style={detailStyles.scrollContainer}
       contentContainerStyle={{paddingBottom: 100}}>
       <View style={styles.topContainer}>
-        <Image
-          source={{uri: musicDetail.feeds_cover}}
-          style={styles.background}
-        />
+        {musicDetail.feeds_cover !== '' ? (
+          <Image
+            source={{uri: musicDetail.feeds_cover}}
+            style={styles.background}
+          />
+        ) : null}
         <TouchableOpacity activeOpacity={1} style={styles.player}>
-          <Image source={{uri: musicDetail.cover}} style={styles.image} />
+          {musicDetail.cover !== '' ? (
+            <Image source={{uri: musicDetail.cover}} style={styles.image} />
+          ) : null}
           <Player url={musicDetail.music_id} />
         </TouchableOpacity>
         <Text
@@ -76,7 +80,10 @@ export default function Music({id}) {
       <Text style={detailStyles.author}>
         文/{musicDetail.story_author_name}
       </Text>
-      <RenderHtml contentWidth={width} source={{html: musicDetail.story}} />
+      <RenderHtml
+        contentWidth={width}
+        source={{html: musicDetail.story || '<p></p>'}}
+      />
     </ScrollView>
   );
 }
