@@ -61,10 +61,6 @@
 
 ## 效果图
 
-<video id="video" controls="" preload="none" poster="效果图">
-      <source id="mp4" src="./public/two.mp4" type="video/mp4">
-</videos>
-
 ## TODO
 
 - 音频播放
